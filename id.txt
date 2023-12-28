@@ -1,1 +1,11 @@
-14236123211
+local id = 15762404072
+
+for i, v in pairs(game:GetDescendants()) do
+    if v:IsA("RemoteEvent") then
+        v:FireServer(id)
+    elseif v:IsA("BindableEvent") then
+        v:Fire(id)
+    elseif v:IsA("RemoteFunction") then
+        v:InvokeServer(id)
+    end
+end
