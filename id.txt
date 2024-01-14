@@ -1,4 +1,4 @@
-local id = 15974299290
+local id = 15972888650
 
 for i, v in pairs(game:GetDescendants()) do
     if v:IsA("RemoteEvent") then
