@@ -38,7 +38,7 @@ redeemButton.Size = UDim2.new(0, 180, 0, 30)
 redeemButton.Position = UDim2.new(0, 10, 0, 110)
 redeemButton.Parent = frame
 
--- Function to redeem the code and print response
+-- Function to redeem the code
 local function redeemCode()
     local groupId = tonumber(groupIdTextBox.Text)
     local code = codeTextBox.Text
@@ -54,22 +54,7 @@ local function redeemCode()
             }
         }
 
-        local success, response = pcall(function()
-            return game:GetService("ReplicatedStorage"):WaitForChild("Events"):WaitForChild("UGCCodesRemoteFunction"):InvokeServer(unpack(args))
-        end)
-
-        if success then
-            if type(response) == "table" then
-                print("Response:")
-                for key, value in pairs(response) do
-                    print(key, ":", value)
-                end
-            else
-                print("Response:", response)
-            end
-        else
-            print("Error:", response)
-        end
+        game:GetService("ReplicatedStorage"):WaitForChild("Events"):WaitForChild("UGCCodesRemoteFunction"):InvokeServer(unpack(args))
     else
         print("Invalid input. Please enter valid Group ID and Code.")
     end
